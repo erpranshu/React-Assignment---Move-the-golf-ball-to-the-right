@@ -9,7 +9,7 @@ class App extends Component {
             posi : 0,
             ballPosition: { left: "0px" }
         };
-        this.renderBallOrButton = this.renderBallOrButton.bind(this)
+        this.renderChoice = this.renderBallOrButton.bind(this)
         this.buttonClickHandler = this.buttonClickHandler.bind(this)
         this.arrowKeyPressed=this.arrowKeyPressed.bind(this)
     };
