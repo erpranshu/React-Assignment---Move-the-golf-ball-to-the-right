@@ -9,12 +9,25 @@ class App extends Component {
             posi : 0,
             ballPosition: { left: "0px" }
         };
-        this.renderChoice = this.renderBallOrButton.bind(this)
+        this.renderBallOrButton = this.renderBallOrButton.bind(this)
         this.buttonClickHandler = this.buttonClickHandler.bind(this)
+        this.arrowKeyPressed=this.arrowKeyPressed.bind(this)
     };
 
+    arrowKeyPressed(evt){
+         if(evt.keyCode===39){
+             if(this.state.renderBall){
+                 const newPosI = this.state.posi+5;
+                 this.setstate({
+                     posi:newPosI,
+                     ballPosition:{left: newPosI+"px"}
+                 })
+             }
+         }
+    }
+
     buttonClickHandler() {
-   
+      this.setState({renderBall:true});
    }
     renderBallOrButton() {
 		if (this.state.renderBall) {
@@ -26,12 +39,12 @@ class App extends Component {
 
     // bind ArrowRight keydown event
     componentDidMount() {
-      
+      document.addEventListener("keydown",this.arrowKeyPressed);
     }
 
     render() {
         return (
-            <div className="playground">
+            <div className="playground" onKeyDown={this.arrowKeyPressed}>
                 {this.renderBallOrButton()}
             </div>
         )
