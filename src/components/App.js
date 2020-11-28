@@ -18,7 +18,7 @@ class App extends Component {
          if(evt.keyCode===39){
              if(this.state.renderBall){
                  const newPosI = this.state.posi+5;
-                 this.setstate({
+                 this.setState({
                      posi:newPosI,
                      ballPosition:{left: newPosI+"px"}
                  })
